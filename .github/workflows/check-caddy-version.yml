@@ -1,4 +1,4 @@
-name: Check Caddy Releases
+name: check caddy version
 
 on:
   schedule:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  check-caddy-release:
+  check-caddy-version:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,7 +26,7 @@ jobs:
 
       - name: Check and compare Caddy release
         id: check_release
-        run: python scripts/check_caddy_release.py
+        run: python scripts/check_caddy_version.py
 
       - name: Update version file
         if: env.IS_NEW_RELEASE == 'true'

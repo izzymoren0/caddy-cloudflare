@@ -52,8 +52,7 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          #platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le,linux/s390x
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64
           tags: |
             ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:${{ env.VERSION }}
             ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:latest
@@ -65,14 +64,3 @@ jobs:
           docker rmi ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:${{ env.VERSION }} || true
           docker rmi ${{ github.actor }}/${{ github.event.repository.name }}:${{ env.VERSION }} || true
           docker builder prune --force
-
-#      - name: Create GitHub Release
-#        uses: actions/create-release@v1
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        with:
-#          tag_name: ${{ env.VERSION }}
-#          release_name: "Caddy Release ${{ env.VERSION }}"
-#          body: "New Caddy release detected. See the full release notes [here](https://github.com/caddyserver/caddy/releases/tag/${{ env.VERSION }})."
-#          draft: false
-#          prerelease: false

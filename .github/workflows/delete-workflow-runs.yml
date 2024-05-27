@@ -1,16 +1,15 @@
 name: Delete old workflow runs
 on:
-#  workflow_dispatch:
-#    inputs:
-#      logLevel:
-#        description: 'Log level'
-#        required: true
-#        default: 'info'
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'info'
 
 # Run monthly, at 02:00 on the 1st day of month
   schedule:
     - cron: '0 2 1 * *'
-
 
 jobs:
   del_runs:
@@ -24,5 +23,5 @@ jobs:
         with:
           token: ${{ github.token }}
           repository: ${{ github.repository }}
-          retain_days: 0
-          keep_minimum_runs: 2
+          retain_days: 30
+          keep_minimum_runs: 10

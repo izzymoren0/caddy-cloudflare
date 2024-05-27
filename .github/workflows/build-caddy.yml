@@ -57,8 +57,8 @@ jobs:
           tags: |
             ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:${{ env.VERSION }}
             ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:latest
-            ${{ github.actor }}/caddy-cloudflare:${{ env.VERSION }}
-            ${{ github.actor }}/caddy-cloudflare:latest
+            ${{ github.actor }}/${{ github.event.repository.name }}:${{ env.VERSION }}
+            ${{ github.actor }}/${{ github.event.repository.name }}:latest
 
       - name: Clean up Docker images
         run: |

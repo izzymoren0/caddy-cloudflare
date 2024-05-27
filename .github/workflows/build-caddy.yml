@@ -59,8 +59,8 @@ jobs:
             ${{ github.actor }}/${{ github.event.repository.name }}:${{ env.VERSION }}
             ${{ github.actor }}/${{ github.event.repository.name }}:latest
 
-      - name: Clean up Docker images
-        run: |
-          docker rmi ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:${{ env.VERSION }} || true
-          docker rmi ${{ github.actor }}/${{ github.event.repository.name }}:${{ env.VERSION }} || true
-          docker builder prune --force
+      #- name: Clean up Docker images
+      #  run: |
+      #    docker rmi ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:${{ env.VERSION }} || true
+      #    docker rmi ${{ github.actor }}/${{ github.event.repository.name }}:${{ env.VERSION }} || true
+      #    docker builder prune --force

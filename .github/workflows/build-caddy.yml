@@ -46,7 +46,7 @@ jobs:
             echo "VERSION=${{ github.event.client_payload.latest_version }}" >> $GITHUB_ENV
           fi
 
-      - name: Build and push Docker image (standard)
+      - name: Build and push Caddy image
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -55,15 +55,15 @@ jobs:
           #platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le,linux/s390x
           platforms: linux/amd64
           tags: |
-            ghcr.io/${{ github.repository_owner }}/caddy-cloudflare:${{ env.VERSION }}
-            ghcr.io/${{ github.repository_owner }}/caddy-cloudflare:latest
+            ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:${{ env.VERSION }}
+            ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:latest
             ${{ github.actor }}/caddy-cloudflare:${{ env.VERSION }}
             ${{ github.actor }}/caddy-cloudflare:latest
 
       - name: Clean up Docker images
         run: |
-          docker rmi ghcr.io/${{ github.repository_owner }}/caddy-cloudflare:${{ env.VERSION }} || true
-          docker rmi ${{ github.actor }}/caddy-cloudflare:${{ env.VERSION }} || true
+          docker rmi ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:${{ env.VERSION }} || true
+          docker rmi ${{ github.actor }}/${{ github.event.repository.name }}:${{ env.VERSION }} || true
           docker builder prune --force
 
 #      - name: Create GitHub Release

@@ -1,15 +1,9 @@
 name: Delete old workflow runs
 on:
   workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Log level'
-        required: true
-        default: 'info'
-
-# Run monthly, at 02:00 on the 1st day of month
+# Run daily, at 02:00
   schedule:
-    - cron: '0 2 1 * *'
+    - cron: '0 2 * * *'
 
 jobs:
   del_runs:

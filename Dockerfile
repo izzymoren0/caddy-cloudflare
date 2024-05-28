@@ -1,7 +1,8 @@
 FROM caddy:builder AS builder
 
 RUN xcaddy build \
-    #--with github.com/caddy-dns/ddnss \
+    --with github.com/Javex/caddy-fail2ban@main \
+    --with github.com/caddy-dns/ddnss \
     --with github.com/caddy-dns/cloudflare
 
 FROM caddy:latest

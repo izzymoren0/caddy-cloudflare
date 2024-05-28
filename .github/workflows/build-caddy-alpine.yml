@@ -56,8 +56,8 @@ jobs:
           tags: |
             ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}-alpine:${{ env.VERSION }}
             ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}-alpine:latest
-            ${{ github.actor }}/${{ github.event.repository.name }}-alpine:${{ env.VERSION }}
-            ${{ github.actor }}/${{ github.event.repository.name }}-alpine:latest
+            ${{ github.repository_owner }}/${{ github.event.repository.name }}-alpine:${{ env.VERSION }}
+            ${{ github.repository_owner }}/${{ github.event.repository.name }}-alpine:latest
 
       #- name: Clean up Docker images
       #  run: |

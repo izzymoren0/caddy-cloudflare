@@ -1,15 +1,10 @@
 name: build-caddy
 on:
   workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Log level'
-        required: true
-        default: 'info'
 
 # Run monthly, at 01:00 on the 1st day of month
-  schedule:
-    - cron: '0 1 1 * *'
+#  schedule:
+#    - cron: '0 1 1 * *'
 
 env:
   TZ: Europe/Berlin

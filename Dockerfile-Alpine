@@ -2,6 +2,7 @@ FROM caddy:builder-alpine AS builder
 
 RUN xcaddy build \
     --with github.com/Javex/caddy-fail2ban@main \
+    --with github.com/caddyserver/transform-encoder \
     --with github.com/caddy-dns/ddnss \
     --with github.com/caddy-dns/cloudflare
 

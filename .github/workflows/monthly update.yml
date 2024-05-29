@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  check-caddy-version:
+  monthly-update:
     runs-on: ubuntu-latest
 
     steps:

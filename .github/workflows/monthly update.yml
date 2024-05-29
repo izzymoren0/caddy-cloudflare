@@ -1,0 +1,31 @@
+name: monthly update
+
+on:
+  schedule:
+    - cron: '15 0 1 * *' # Runs every 1st of a month at 0:15
+  workflow_dispatch: # Allows manual triggering
+
+permissions:
+  contents: write
+
+jobs:
+  check-caddy-version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Trigger Build Workflow
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.repos.createDispatchEvent({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              event_type: 'caddy-release',
+              client_payload: {
+                latest_version: 'latest'
+              }
+            })
